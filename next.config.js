@@ -1,10 +1,30 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   reactStrictMode: true,
-  images: {
-    domains: ['img.icons8.com'],
-  },
   eslint: {
-    dirs: ['src/pages', 'src/core', 'src/stores', 'src/templates', 'src/home'],
+    dirs: [
+      'stories',
+      'src/__test__',
+      'src/common',
+      'src/helpers',
+      'src/modules',
+      'src/pages',
+      'src/styles',
+      'src/templates',
+    ],
+  },
+  images: {
+    domains: ['avatars.githubusercontent.com'],
+  },
+  async redirects() {
+    return [
+      {
+        source: '/editor',
+        destination: '/builder',
+        permanent: true,
+      },
+    ];
   },
 };
+
+module.exports = nextConfig;
